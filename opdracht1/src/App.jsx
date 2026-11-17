@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Navbar from './Navbar.jsx'
 
 function App() {
   const [categories, setCategories] = useState([])
@@ -19,25 +20,28 @@ function App() {
   }, [])
 
   return (
-    <div className="container py-4">
-      <h1 className="mb-4">Categories</h1>
+    <>
+      <Navbar />
+      <main className="container py-4">
+        <h1 className="mb-4">Categories</h1>
 
-      {loading && <p>Laden...</p>}
-      {error && <div className="alert alert-danger">{error}</div>}
+        {loading && <p>Laden...</p>}
+        {error && <div className="alert alert-danger">{error}</div>}
 
-      <div className="row g-3">
-        {categories.map((category) => (
-          <div className="col-12 col-md-6 col-lg-4" key={category.id}>
-            <div className="card h-100">
-              <div className="card-body">
-                <h5 className="card-title">{category.title}</h5>
-                <p className="card-text">{category.description}</p>
+        <div className="row g-3">
+          {categories.map((category) => (
+            <div className="col-12 col-md-6 col-lg-4" key={category.id}>
+              <div className="card h-100">
+                <div className="card-body">
+                  <h5 className="card-title">{category.title}</h5>
+                  <p className="card-text">{category.description}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </div>
+          ))}
+        </div>
+      </main>
+    </>
   )
 }
 
